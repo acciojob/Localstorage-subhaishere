@@ -1,42 +1,51 @@
-const addItems = document.querySelector('.add-items');
-  const itemsList = document.querySelector('.plates');
-  const items = JSON.parse(localStorage.getItem('items')) || [];
+/*  your css code here. If applicable */
+#wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            row-gap: 24px;
+            col-gap: 10px;
+        }
 
-  function addItem(e) {
-    e.preventDefault();
-    const text = (this.querySelector('[name=item]')).value;
-    const item = {
-      text,
-      done: false
-    };
+        #acciojob {
+            background-color: #626ee3;
+            order: 1;
+            flex-basis: 75%;
+            margin: auto;
+        }
 
-    items.push(item);
-    populateList(items, itemsList);
-    localStorage.setItem('items', JSON.stringify(items));
-    this.reset();
-  }
+        #dsa {
+            background-color: #890023;
+            flex-basis: 50%;
+            align-self: center;
+        }
 
-  function populateList(plates = [], platesList) {
-    platesList.innerHTML = plates.map((plate, i) => {
-      return `
-        <li>
-          <input type="checkbox" data-index=${i} id="item${i}" ${plate.done ? 'checked' : ''} />
-          <label for="item${i}">${plate.text}</label>
-        </li>
-      `;
-    }).join('');
-  }
+        #mern {
+            flex-basis: 30%;
+            background-color: #f37f1b;
+            height: 75px;
+        }
 
-  function toggleDone(e) {
-    if (!e.target.matches('input')) return; // skip this unless it's an input
-    const el = e.target;
-    const index = el.dataset.index;
-    items[index].done = !items[index].done;
-    localStorage.setItem('items', JSON.stringify(items));
-    populateList(items, itemsList);
-  }
+        #buisness-analytics {
+            background-color: #11967e;
+            order: 2;
+            flex-basis: 40%;
+            margin-right: 10px;
+            align-self: flex-end;
+        }
 
-  addItems.addEventListener('submit', addItem);
-  itemsList.addEventListener('click', toggleDone);
+        #spring {
+            background-color: #f21b3f;
+            order: 2;
+            flex-grow: 1;
+            height: 75px;
+        }
 
-  populateList(items, itemsList);
+        .product {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50px;
+            color: white;
+            font-weight: bold;
+        }
